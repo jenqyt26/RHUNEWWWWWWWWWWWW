@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>MacHealthUnit</title>
 </head>
 <body>
 
@@ -12,11 +12,35 @@
 
 @section('content')
 
-<div class="flex justify-between items-center mb-6">
-    <h2 class="text-2xl font-bold text-gray-800">Families</h2>
-    <a href="{{ route('families.create') }}" class="bg-[#1a4332] text-white px-4 py-2 rounded-lg hover:bg-[#0f2818] transition">
-        + Add Family
-    </a>
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
+    <div>
+        <h2 class="text-2xl font-bold text-gray-800">Families</h2>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+        <form method="GET" action="{{ route('families.index') }}" class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+            <div class="flex gap-2 w-full sm:w-auto">
+                <input type="text" name="search" value="{{ old('search', $search ?? '') }}" placeholder="Search folder or member" class="border border-gray-300 rounded-lg px-4 py-2 w-full sm:w-72 focus:outline-none focus:ring-2 focus:ring-[#1a4332]" />
+                <button type="submit" class="bg-[#1a4332] text-white px-4 py-2 rounded-lg hover:bg-[#0f2818] transition whitespace-nowrap">Search</button>
+            </div>
+
+            <select name="barangay_id" class="border border-gray-300 rounded-lg px-4 py-2 w-full sm:w-56 focus:outline-none focus:ring-2 focus:ring-[#1a4332]">
+                <option value="">All Barangays</option>
+                @foreach($barangays as $barangay)
+                    <option value="{{ $barangay->id }}" {{ (string) $barangay->id === (string) ($barangayId ?? '') ? 'selected' : '' }}>
+                        {{ $barangay->barangay_name }}
+                    </option>
+                @endforeach
+            </select>
+
+            <button type="submit"
+        class="bg-[#1a4332] text-white px-4 py-2 rounded-lg hover:bg-[#0f2818] transition">
+        Filter
+    </button>
+
+        </form>
+        <a href="{{ route('families.create') }}" class="bg-[#1a4332] text-white px-4 py-2 rounded-lg hover:bg-[#0f2818] transition">+ Add Family</a>
+    </div>
 </div>
 
 @if ($message = session('success'))

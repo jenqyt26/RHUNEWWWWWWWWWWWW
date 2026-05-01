@@ -49,6 +49,15 @@
             </a>
 
         </nav>
+
+        <div class="px-4 pb-6 border-t border-white border-opacity-20">
+            <form method="POST" action="{{ route('logout') }}" class="w-full">
+                @csrf
+                <button type="submit" class="sidebar-link w-full justify-start hover:bg-red-600">
+                    <i class="fas fa-sign-out-alt w-5"></i> Logout
+                </button>
+            </form>
+        </div>
     </aside>
 
     <!-- MAIN -->

@@ -19,7 +19,7 @@
     <table class="w-full">
         <thead class="bg-gray-50">
             <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Folder No</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Family Name</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Barangay</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Created</th>
@@ -29,7 +29,7 @@
         <tbody class="divide-y divide-gray-200">
             @forelse($families as $family)
                 <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 text-sm text-gray-600">{{ $family->id }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-600">{{ $family->family_number }}</td>
                     <td class="px-6 py-4 text-sm text-gray-800 font-medium">{{ $family->family_name }}</td>
                     <td class="px-6 py-4 text-sm text-gray-600">{{ $family->barangay->barangay_name }}</td>
                     <td class="px-6 py-4 text-sm text-gray-600">{{ $family->created_at->format('M d, Y') }}</td>

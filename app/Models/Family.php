@@ -9,7 +9,7 @@ class Family extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['family_name', 'barangay_id'];
+    protected $fillable = ['family_name', 'barangay_id', 'family_number'];
 
     public function barangay(){
         return $this->belongsTo(Barangay::class);

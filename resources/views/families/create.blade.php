@@ -45,6 +45,15 @@
                 @enderror
             </div>
 
+            <div>
+                <label for="family_number" class="block text-sm font-medium text-gray-700 mb-2">Folder Number</label>
+                <input type="number" id="family_number" name="family_number" placeholder="Leave blank to auto-assign" value="{{ old('family_number') }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4332] focus:border-transparent">
+                <p class="text-xs text-gray-500 mt-1">Optional. If blank, the next number for the selected barangay is assigned.</p>
+                @error('family_number')
+                    <span class="text-red-600 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
+
             <div class="flex gap-3 pt-4">
                 <button type="submit" class="bg-[#1a4332] text-white px-6 py-2 rounded-lg hover:bg-[#0f2818] transition">Save</button>
                 <a href="{{ route('families.index') }}" class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">Cancel</a>
